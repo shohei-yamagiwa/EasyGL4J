@@ -38,9 +38,8 @@ public abstract class Dialog extends Window {
      *
      * @param title    The title of the dialog.
      * @param owner    The container that owns the dialog.
-     * @param graphics The graphics context.
      */
-    public Dialog(String title, Window owner, Graphics graphics) {
-        super(title, owner, graphics);
+    public Dialog(String title, Window owner, int width, int height) {
+        super(title, owner, width, height);
     }
 }

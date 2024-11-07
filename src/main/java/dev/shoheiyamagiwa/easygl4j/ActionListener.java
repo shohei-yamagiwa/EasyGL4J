@@ -36,4 +36,3 @@ public interface ActionListener extends EventListener {
      */
     void actionPerformed(ActionEvent event);
 }
-

@@ -39,8 +39,4 @@ public class GLButton extends Button {
     protected GLButton(Container parent) {
         super(parent);
     }
-
-    @Override
-    public void render(Graphics g) {
-    }
 }

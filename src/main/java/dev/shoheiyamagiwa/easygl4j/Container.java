@@ -54,11 +54,6 @@ public class Container extends Component {
         children.add(component);
     }
 
-    @Override
-    public void render(Graphics g) {
-        children.forEach(component -> component.render(g));
-    }
-
     public List<Component> getChildren() {
         return children;
     }

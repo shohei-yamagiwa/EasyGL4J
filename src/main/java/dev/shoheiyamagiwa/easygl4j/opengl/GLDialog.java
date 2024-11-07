@@ -23,7 +23,6 @@ package dev.shoheiyamagiwa.easygl4j.opengl;
 
 import dev.shoheiyamagiwa.easygl4j.Dialog;
 import dev.shoheiyamagiwa.easygl4j.Window;
-import dev.shoheiyamagiwa.easygl4j.opengl.graphics.GLGraphics;
 
 /**
  * The {@code GLDialog} class is a main class to produce a dialog with using OpenGL contexts.
@@ -38,8 +37,8 @@ public class GLDialog extends Dialog {
      * @param title The title of the dialog.
      * @param owner The container that owns the dialog.
      */
-    public GLDialog(String title, Window owner) {
-        super(title, owner, new GLGraphics());
+    public GLDialog(String title, Window owner, int width, int height) {
+        super(title, owner, width, height);
     }
 
     @Override

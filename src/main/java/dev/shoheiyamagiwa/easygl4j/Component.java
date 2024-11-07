@@ -31,109 +31,107 @@ public abstract class Component {
     /**
      * The parent of the component. It may be {@code null} if the component is in top-level.
      */
-    private Container parent;
+    protected Container parent;
 
     /**
      * The x position of the component in the parent component.
      */
-    private int x;
+    protected int x;
 
     /**
      * The y position of the component in the parent component.
      */
-    private int y;
+    protected int y;
 
     /**
      * The width of the component.
      */
-    private int width;
+    protected int width;
 
     /**
      * The height of the component.
      */
-    private int height;
+    protected int height;
 
     /**
      * Indicates whether the component is visible or not.
      * A component that is not visible is not displayed on the screen.
      */
-    private boolean visible;
+    protected boolean visible;
 
     /**
      * Indicates whether the component is enabled or not.
      * A component that is not enabled does not interact with the user.
      */
-    private boolean enabled;
+    protected boolean enabled;
 
-    protected Component(Container parent) {
+    public Component(Container parent) {
         this.parent = parent;
     }
 
-    public abstract void render(Graphics g);
-
-    protected Container getParent() {
+    public Container getParent() {
         return parent;
     }
 
-    protected void setParent(Container parent) {
+    public void setParent(Container parent) {
         this.parent = parent;
     }
 
-    protected void setLocation(int x, int y) {
+    public void setLocation(int x, int y) {
         setX(x);
         setY(y);
     }
 
-    protected int getX() {
+    public int getX() {
         return x;
     }
 
-    protected void setX(int x) {
+    public void setX(int x) {
         this.x = x;
     }
 
-    protected int getY() {
+    public int getY() {
         return y;
     }
 
-    protected void setY(int y) {
+    public void setY(int y) {
         this.y = y;
     }
 
-    protected void setSize(int width, int height) {
+    public void setSize(int width, int height) {
         setWidth(width);
         setHeight(height);
     }
 
-    protected int getWidth() {
+    public int getWidth() {
         return width;
     }
 
-    protected void setWidth(int width) {
+    public void setWidth(int width) {
         this.width = Math.max(0, width);
     }
 
-    protected int getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    protected void setHeight(int height) {
+    public void setHeight(int height) {
         this.height = Math.max(0, height);
     }
 
-    protected boolean isVisible() {
+    public boolean isVisible() {
         return visible;
     }
 
-    protected void setVisible(boolean visible) {
+    public void setVisible(boolean visible) {
         this.visible = visible;
     }
 
-    protected boolean isEnabled() {
+    public boolean isEnabled() {
         return enabled;
     }
 
-    protected void setEnabled(boolean enabled) {
+    public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 }

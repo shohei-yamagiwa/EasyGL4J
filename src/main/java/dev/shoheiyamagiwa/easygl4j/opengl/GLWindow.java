@@ -23,7 +23,6 @@ package dev.shoheiyamagiwa.easygl4j.opengl;
 
 import dev.shoheiyamagiwa.easygl4j.Graphics;
 import dev.shoheiyamagiwa.easygl4j.Window;
-import dev.shoheiyamagiwa.easygl4j.opengl.graphics.GLGraphics;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
@@ -42,12 +41,12 @@ public class GLWindow extends Window {
      */
     private long id;
 
-    public GLWindow(String title) {
-        super(title, new GLGraphics());
+    public GLWindow(String title, int width, int height) {
+        super(title, width, height);
     }
 
-    public GLWindow(String title, Window owner) {
-        super(title, owner, new GLGraphics());
+    public GLWindow(String title, Window owner, int width, int height) {
+        super(title, owner, width, height);
     }
 
     @Override
@@ -90,14 +89,6 @@ public class GLWindow extends Window {
         // Initialize GL features.
         GL.createCapabilities();
         GL11.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    }
-
-    @Override
-    public void render(Graphics g) {
-        super.render(g);
-
-        glfwSwapBuffers(id);
-        glfwPollEvents();
     }
 
     @Override

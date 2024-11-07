@@ -23,7 +23,6 @@ package dev.shoheiyamagiwa.easygl4j.opengl;
 
 import dev.shoheiyamagiwa.easygl4j.Popup;
 import dev.shoheiyamagiwa.easygl4j.Window;
-import dev.shoheiyamagiwa.easygl4j.opengl.graphics.GLGraphics;
 
 /**
  * The {@code GLPopup} class is a main class to create the popup with using OpenGL contexts.
@@ -33,8 +32,8 @@ import dev.shoheiyamagiwa.easygl4j.opengl.graphics.GLGraphics;
  */
 public class GLPopup extends Popup {
 
-    public GLPopup(String title, Window owner) {
-        super(title, owner, new GLGraphics());
+    public GLPopup(String title, Window owner, int width, int height) {
+        super(title, owner, width, height);
     }
 
     @Override

@@ -27,15 +27,13 @@ package dev.shoheiyamagiwa.easygl4j;
  * @author Shohei Yamagiwa
  */
 public abstract class Popup extends Window {
-
     /**
      * Creates new popup with given title under the owner container.
      *
-     * @param title    The title of the popup.
-     * @param owner    The owner of the popup
-     * @param graphics graphics The graphics context.
+     * @param title The title of the popup.
+     * @param owner The owner of the popup
      */
-    public Popup(String title, Window owner, Graphics graphics) {
-        super(title, owner, graphics);
+    public Popup(String title, Window owner, int width, int height) {
+        super(title, owner, width, height);
     }
 }

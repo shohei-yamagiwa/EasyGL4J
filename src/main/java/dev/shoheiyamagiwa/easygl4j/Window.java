@@ -49,17 +49,12 @@ public abstract class Window extends Container {
     private WindowListener windowListener;
 
     /**
-     * The graphics context of the window.
-     */
-    private final Graphics graphics;
-
-    /**
      * Creates new root window with given {@code title}.
      *
      * @param title The title of the window.
      */
-    public Window(String title, Graphics graphics) {
-        this(title, null, graphics);
+    public Window(String title, int width, int height) {
+        this(title, null, width, height);
     }
 
     /**
@@ -68,14 +63,11 @@ public abstract class Window extends Container {
      * @param title The title of the window.
      * @param owner The owner of the window.
      */
-    public Window(String title, Window owner, Graphics graphics) {
+    public Window(String title, Window owner, int width, int height) {
         super(owner);
         this.title = title;
-        this.graphics = graphics;
-
-        create();
-        render(graphics);
-        dispose();
+        this.width = width;
+        this.height = height;
     }
 
     /**
@@ -118,9 +110,5 @@ public abstract class Window extends Container {
 
     public void setWindowListener(WindowListener windowListener) {
         this.windowListener = windowListener;
-    }
-
-    public Graphics getGraphics() {
-        return graphics;
     }
 }

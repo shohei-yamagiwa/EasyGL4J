@@ -32,9 +32,4 @@ public class GLPanel extends GLComponent {
     protected GLPanel(Container parent) {
         super(parent);
     }
-
-    @Override
-    public void render(Graphics g) {
-
-    }
 }
