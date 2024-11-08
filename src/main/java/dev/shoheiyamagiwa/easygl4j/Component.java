@@ -31,7 +31,7 @@ public abstract class Component {
     /**
      * The parent of the component. It may be {@code null} if the component is in top-level.
      */
-    protected Container parent;
+    protected final Container parent;
 
     /**
      * The x position of the component in the parent component.
@@ -65,16 +65,17 @@ public abstract class Component {
      */
     protected boolean enabled;
 
+    /**
+     * Creates new component with given container as parent.
+     *
+     * @param parent The parent container.
+     */
     public Component(Container parent) {
         this.parent = parent;
     }
 
     public Container getParent() {
         return parent;
-    }
-
-    public void setParent(Container parent) {
-        this.parent = parent;
     }
 
     public void setLocation(int x, int y) {
