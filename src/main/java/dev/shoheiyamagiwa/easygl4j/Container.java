@@ -30,7 +30,7 @@ import java.util.List;
  * @author Shohei Yamagiwa
  * @since 1.0
  */
-public class Container extends Component {
+public abstract class Container extends Component {
     /**
      * All child components that belong to the container.
      */
