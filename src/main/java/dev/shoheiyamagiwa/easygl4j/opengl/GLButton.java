@@ -21,9 +21,12 @@
  */
 package dev.shoheiyamagiwa.easygl4j.opengl;
 
+import dev.shoheiyamagiwa.easygl4j.graphics.AbstractFont;
+import dev.shoheiyamagiwa.easygl4j.graphics.Color;
 import dev.shoheiyamagiwa.easygl4j.graphics.Graphics;
-import dev.shoheiyamagiwa.easygl4j.graphics.Image;
-import dev.shoheiyamagiwa.easygl4j.utils.GLUtil;
+import dev.shoheiyamagiwa.easygl4j.opengl.graphics.GLFont;
+
+import java.awt.*;
 
 /**
  * The {@code GLButton} class represents the button in the application and is implemented with OpenGL specification.
@@ -31,11 +34,21 @@ import dev.shoheiyamagiwa.easygl4j.utils.GLUtil;
  * @author Shohei Yamagiwa
  */
 public class GLButton extends GLComponent {
+    private AbstractFont font;
+
     @Override
     public void draw(Graphics g) {
+        if (font == null) {
+            font = new GLFont(new Font("JetBrains Mono", Font.PLAIN, 24));
+        }
+        g.setFont(font);
+        g.drawText("abcde", 10, 10, new Color(0.5F, 0.5F, 0.0F));
     }
 
     @Override
     public void dispose() {
+        if (font != null) {
+            font.dispose();
+        }
     }
 }
