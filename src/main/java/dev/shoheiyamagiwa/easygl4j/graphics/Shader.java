@@ -19,57 +19,45 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package dev.shoheiyamagiwa.easygl4j;
-
-import java.nio.ByteBuffer;
+package dev.shoheiyamagiwa.easygl4j.graphics;
 
 /**
- * The {@code Texture} interface is the superclass of all classes that represent rendered texture.
+ * The {@code Shader} interface is the superclass of all kind of shaders.
+ * All shaders have to implement this interface.
  *
  * @author Shohei Yamagiwa
  * @since 1.0
  */
-public abstract class Image {
+public abstract class Shader {
     /**
-     * The source buffer of the texture.
+     * The handle of the shader.
      */
-    private final ByteBuffer imageBuffer;
+    private final int handle;
+    /**
+     * The source code of the shader.
+     */
+    private final CharSequence source;
 
     /**
-     * The width of the texture.
-     */
-    private final int width;
-
-    /**
-     * The height of the texture.
-     */
-    private final int height;
-
-    /**
-     * Creates new texture with given buffer.
+     * Creates new shader with given shader source
      *
-     * @param imageBuffer The buffer of image.
+     * @param source The source code of the shader.
      */
-    public Image(ByteBuffer imageBuffer, int width, int height) {
-        this.imageBuffer = imageBuffer;
-        this.width = width;
-        this.height = height;
+    public Shader(int handle, CharSequence source) {
+        this.handle = handle;
+        this.source = source;
     }
 
     /**
-     * Disposes the image.
+     * Disposes the shader
      */
     public abstract void dispose();
 
-    public ByteBuffer getImageBuffer() {
-        return imageBuffer;
+    public int getHandle() {
+        return handle;
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
+    public CharSequence getSource() {
+        return source;
     }
 }

@@ -19,45 +19,57 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package dev.shoheiyamagiwa.easygl4j;
+package dev.shoheiyamagiwa.easygl4j.graphics;
+
+import java.nio.ByteBuffer;
 
 /**
- * The {@code Shader} interface is the superclass of all kind of shaders.
- * All shaders have to implement this interface.
+ * The {@code Texture} interface is the superclass of all classes that represent rendered texture.
  *
  * @author Shohei Yamagiwa
  * @since 1.0
  */
-public abstract class Shader {
+public abstract class Image {
     /**
-     * The handle of the shader.
+     * The source buffer of the texture.
      */
-    private final int handle;
-    /**
-     * The source code of the shader.
-     */
-    private final CharSequence source;
+    private final ByteBuffer imageBuffer;
 
     /**
-     * Creates new shader with given shader source
-     *
-     * @param source The source code of the shader.
+     * The width of the texture.
      */
-    public Shader(int handle, CharSequence source) {
-        this.handle = handle;
-        this.source = source;
+    private final int width;
+
+    /**
+     * The height of the texture.
+     */
+    private final int height;
+
+    /**
+     * Creates new texture with given buffer.
+     *
+     * @param imageBuffer The buffer of image.
+     */
+    public Image(ByteBuffer imageBuffer, int width, int height) {
+        this.imageBuffer = imageBuffer;
+        this.width = width;
+        this.height = height;
     }
 
     /**
-     * Disposes the shader
+     * Disposes the image.
      */
     public abstract void dispose();
 
-    public int getHandle() {
-        return handle;
+    public ByteBuffer getImageBuffer() {
+        return imageBuffer;
     }
 
-    public CharSequence getSource() {
-        return source;
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }
