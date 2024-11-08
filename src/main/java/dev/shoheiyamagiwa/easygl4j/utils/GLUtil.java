@@ -94,7 +94,7 @@ public class GLUtil {
      * @return {@code GLImage} instance.
      */
     public static GLImage createImage(Color color, int width, int height) {
-        ByteBuffer buffer = MemoryUtil.memAlloc(width * height * Float.BYTES);
+        ByteBuffer buffer = MemoryUtil.memAlloc(width * height * 4);
         for (int i = 0; i < height * width; i++) {
             long hex = color.toHex();
             /* Red component 0xAARRGGBB >> 16 = 0x0000AARR */
@@ -120,7 +120,7 @@ public class GLUtil {
      * @return {@code GLImage} instance.
      */
     public static GLImage createVerticalGradientImage(Color top, Color bottom, int width, int height) {
-        ByteBuffer buffer = MemoryUtil.memAlloc(width * height * Float.BYTES);
+        ByteBuffer buffer = MemoryUtil.memAlloc(width * height * 4);
         for (int i = 0; i < height; i++) {
             float colorRatio = 1.0F - ((float) (i + 1) / height);
             float r = top.getRed() * colorRatio + bottom.getRed() * (1.0F - colorRatio);
@@ -150,12 +150,12 @@ public class GLUtil {
     /**
      * Creates horizontal gradient {@code GLImage} using given colors.
      *
-     * @param left    The left color of a gradient.
+     * @param left  The left color of a gradient.
      * @param right The right color of a gradient.
      * @return {@code GLImage} instance.
      */
     public static GLImage createHorizontalGradientImage(Color left, Color right, int width, int height) {
-        ByteBuffer buffer = MemoryUtil.memAlloc(width * height * Float.BYTES);
+        ByteBuffer buffer = MemoryUtil.memAlloc(width * height * 4);
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 float colorRatio = 1.0F - ((float) (j + 1) / height);

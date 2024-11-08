@@ -35,6 +35,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
+import java.awt.*;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
@@ -44,7 +45,7 @@ import java.nio.IntBuffer;
  * @author Shohei Yamagiwa
  * @since 1.0
  */
-public class GLGraphics implements Graphics {
+public class GLGraphics extends Graphics {
     /**
      * Variable names in vertex shader file.
      */
@@ -71,7 +72,7 @@ public class GLGraphics implements Graphics {
     private boolean rendering;
 
     /**
-     * Initializes graphics context.
+     * Initialize graphics context.
      */
     public GLGraphics() {
         // Initialize states
@@ -154,6 +155,11 @@ public class GLGraphics implements Graphics {
         /* Enable blending */
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
+        // Set fallback font in case that the user forget to set the font.
+        if (font == null) {
+            font = new GLFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+        }
     }
 
     @Override
@@ -179,7 +185,37 @@ public class GLGraphics implements Graphics {
 
     @Override
     public void drawText(String text, int x, int y, Color color) {
+        GLFont gf = (GLFont) font;
+        GLImage image = gf.getFontImage();
+
+        int textHeight = font.getHeight(text);
+        float drawX = x;
+        float drawY = y;
+        if (textHeight > image.getHeight()) {
+            drawY += textHeight - image.getHeight();
+        }
+
         begin();
+        image.bind();
+        for (int i = 0; i < text.length(); i++) {
+            char ch = text.charAt(i);
+
+            /* Update x and y to draw at the next line */
+            if (ch == '\n') {
+                drawY -= image.getHeight();
+                drawX = x;
+                continue;
+            }
+
+            /* Skip the carriage return */
+            if (ch == '\r') {
+                continue;
+            }
+
+            GLFont.Glyph glyph = gf.getGlyph(ch);
+            drawImage(image, drawX, drawY, glyph.x(), glyph.y(), glyph.width(), glyph.height(), color);
+            drawX += glyph.width();
+        }
         end();
     }
 
@@ -201,10 +237,16 @@ public class GLGraphics implements Graphics {
         end();
     }
 
+    /**
+     * Clear current window buffer.
+     */
     public void clear() {
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
     }
 
+    /**
+     * Begin rendering.
+     */
     public void begin() {
         if (rendering) {
             return;
@@ -213,6 +255,9 @@ public class GLGraphics implements Graphics {
         verticesCount = 0;
     }
 
+    /**
+     * End rendering.
+     */
     public void end() {
         if (!rendering) {
             return;
@@ -243,7 +288,7 @@ public class GLGraphics implements Graphics {
     }
 
     /**
-     * Dispose renderer and its used data
+     * Dispose the graphics and its used data
      */
     public void dispose() {
         MemoryUtil.memFree(vertices);
@@ -251,6 +296,32 @@ public class GLGraphics implements Graphics {
         vao.delete();
         vbo.delete();
         program.delete();
+    }
+
+    /**
+     * Draws an image region with the currently bound texture on specified coordinates.
+     *
+     * @param image     Used for getting width and height of the image
+     * @param x         X position of the texture
+     * @param y         Y position of the texture
+     * @param regX      X position of the texture region
+     * @param regY      Y position of the texture region
+     * @param regWidth  Width of the texture region
+     * @param regHeight Height of the texture region
+     * @param c         The color to use
+     */
+    public void drawImage(Image image, float x, float y, float regX, float regY, float regWidth, float regHeight, Color c) {
+        /* Vertex positions */
+        float x2 = x + regWidth;
+        float y2 = y + regHeight;
+
+        /* Texture coordinates */
+        float s1 = regX / image.getWidth();
+        float t1 = regY / image.getHeight();
+        float s2 = (regX + regWidth) / image.getWidth();
+        float t2 = (regY + regHeight) / image.getHeight();
+
+        drawImage(x, y, x2, y2, s1, t1, s2, t2, c);
     }
 
     /**

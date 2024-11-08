@@ -27,7 +27,12 @@ package dev.shoheiyamagiwa.easygl4j.graphics;
  * @author Shohei Yamagiwa
  * @since 1.0
  */
-public interface Graphics {
+public abstract class Graphics {
+    /**
+     * The current font to rendering the text.
+     */
+    protected AbstractFont font;
+
     /**
      * Draws a rect with given dimensions and color.
      *
@@ -37,7 +42,7 @@ public interface Graphics {
      * @param height The height of the rect.
      * @param color  The color of the rect.
      */
-    void drawRect(int x, int y, int width, int height, Color color);
+    public abstract void drawRect(int x, int y, int width, int height, Color color);
 
     /**
      * Draws a horizontal gradient rect with given dimensions and colors.
@@ -49,7 +54,7 @@ public interface Graphics {
      * @param left   The left color of the rect.
      * @param right  The right color of the rect.
      */
-    void drawHorizontalGradientRect(int x, int y, int width, int height, Color left, Color right);
+    public abstract void drawHorizontalGradientRect(int x, int y, int width, int height, Color left, Color right);
 
     /**
      * Draws a vertical gradient rect with given dimensions and colors.
@@ -61,7 +66,7 @@ public interface Graphics {
      * @param top    The top color of the rect.
      * @param bottom The top color of the rect.
      */
-    void drawVerticalGradientRect(int x, int y, int width, int height, Color top, Color bottom);
+    public abstract void drawVerticalGradientRect(int x, int y, int width, int height, Color top, Color bottom);
 
     /**
      * Draws a text with given dimensions and color.
@@ -71,7 +76,7 @@ public interface Graphics {
      * @param y     The top position of the text.
      * @param color The color of the text.
      */
-    void drawText(String text, int x, int y, Color color);
+    public abstract void drawText(String text, int x, int y, Color color);
 
     /**
      * Draws an image at given positions on the screen.
@@ -80,5 +85,14 @@ public interface Graphics {
      * @param x     The x position of the texture.
      * @param y     The y position of the texture.
      */
-    void drawImage(Image image, int x, int y);
+    public abstract void drawImage(Image image, int x, int y);
+
+    /**
+     * Set the font to use for text rendering.
+     *
+     * @param font The font to be rendered on the screen.
+     */
+    public void setFont(AbstractFont font) {
+        this.font = font;
+    }
 }
