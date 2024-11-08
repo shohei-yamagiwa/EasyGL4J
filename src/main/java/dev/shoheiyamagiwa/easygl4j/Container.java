@@ -54,6 +54,11 @@ public abstract class Container extends Component {
         children.add(component);
     }
 
+    /**
+     * Gets all child components.
+     *
+     * @return All child components belong to the container.
+     */
     public List<Component> getChildren() {
         return children;
     }
