@@ -21,7 +21,7 @@
  */
 package dev.shoheiyamagiwa.easygl4j.opengl.graphics.shader;
 
-import dev.shoheiyamagiwa.easygl4j.Shader;
+import dev.shoheiyamagiwa.easygl4j.graphics.Shader;
 import dev.shoheiyamagiwa.easygl4j.math.Matrix4f;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;

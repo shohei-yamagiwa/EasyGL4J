@@ -21,10 +21,10 @@
  */
 package dev.shoheiyamagiwa.easygl4j.opengl.graphics;
 
-import dev.shoheiyamagiwa.easygl4j.Color;
-import dev.shoheiyamagiwa.easygl4j.Graphics;
-import dev.shoheiyamagiwa.easygl4j.Image;
-import dev.shoheiyamagiwa.easygl4j.Shader;
+import dev.shoheiyamagiwa.easygl4j.graphics.Color;
+import dev.shoheiyamagiwa.easygl4j.graphics.Graphics;
+import dev.shoheiyamagiwa.easygl4j.graphics.Image;
+import dev.shoheiyamagiwa.easygl4j.graphics.Shader;
 import dev.shoheiyamagiwa.easygl4j.math.Matrix4f;
 import dev.shoheiyamagiwa.easygl4j.opengl.graphics.shader.GLFragmentShader;
 import dev.shoheiyamagiwa.easygl4j.opengl.graphics.shader.GLShaderProgram;

@@ -21,16 +21,14 @@
  */
 package dev.shoheiyamagiwa.easygl4j.opengl;
 
-import dev.shoheiyamagiwa.easygl4j.Button;
 import dev.shoheiyamagiwa.easygl4j.Container;
-import dev.shoheiyamagiwa.easygl4j.Graphics;
 
 /**
- * The {@code GLButton} class is an implementation of the button super class.
+ * The {@code GLButton} class represents the button in the application and is implemented with OpenGL specification.
  *
  * @author Shohei Yamagiwa
  */
-public class GLButton extends Button {
+public class GLButton extends GLComponent {
     /**
      * Creates a new button that belongs to parent container.
      *

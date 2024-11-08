@@ -21,7 +21,7 @@
  */
 package dev.shoheiyamagiwa.easygl4j.opengl.graphics;
 
-import dev.shoheiyamagiwa.easygl4j.Image;
+import dev.shoheiyamagiwa.easygl4j.graphics.Image;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 

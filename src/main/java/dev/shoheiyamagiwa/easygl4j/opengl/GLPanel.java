@@ -22,7 +22,6 @@
 package dev.shoheiyamagiwa.easygl4j.opengl;
 
 import dev.shoheiyamagiwa.easygl4j.Container;
-import dev.shoheiyamagiwa.easygl4j.Graphics;
 
 /**
  * @author Shohei Yamagiwa

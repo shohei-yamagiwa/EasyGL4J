@@ -21,7 +21,7 @@
  */
 package dev.shoheiyamagiwa.easygl4j.opengl.graphics.shader;
 
-import dev.shoheiyamagiwa.easygl4j.Shader;
+import dev.shoheiyamagiwa.easygl4j.graphics.Shader;
 
 import static org.lwjgl.opengl.GL20.*;
 
