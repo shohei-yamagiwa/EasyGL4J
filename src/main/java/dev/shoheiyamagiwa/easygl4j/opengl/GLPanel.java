@@ -29,11 +29,9 @@ import dev.shoheiyamagiwa.easygl4j.graphics.Graphics;
 public class GLPanel extends GLComponent {
     @Override
     public void draw(Graphics g) {
-
     }
 
     @Override
     public void dispose() {
-
     }
 }

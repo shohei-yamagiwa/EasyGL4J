@@ -31,18 +31,11 @@ import dev.shoheiyamagiwa.easygl4j.utils.GLUtil;
  * @author Shohei Yamagiwa
  */
 public class GLButton extends GLComponent {
-    private Image sampleImg;
-
     @Override
     public void draw(Graphics g) {
-        if (sampleImg == null) {
-            sampleImg = GLUtil.createImage("/EasyGL4J/src/main/resources/sample.png");
-        }
-        g.drawImage(sampleImg, 10, 10);
     }
 
     @Override
     public void dispose() {
-        sampleImg.dispose();
     }
 }
