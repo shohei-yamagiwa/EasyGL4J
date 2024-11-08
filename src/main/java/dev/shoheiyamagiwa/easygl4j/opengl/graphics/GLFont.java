@@ -130,7 +130,6 @@ public class GLFont extends AbstractFont {
 
         /* Loop through all printable ascii codes */
         for (char c : ASCII.PRINTABLE_CODES) {
-            System.out.println(c);
             BufferedImage ch = createCharImage(font, c);
             if (ch == null) { // If character image is null, specified font doesn't contain the character.
                 continue;
