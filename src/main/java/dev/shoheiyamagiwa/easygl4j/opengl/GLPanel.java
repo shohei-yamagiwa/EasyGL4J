@@ -21,14 +21,19 @@
  */
 package dev.shoheiyamagiwa.easygl4j.opengl;
 
-import dev.shoheiyamagiwa.easygl4j.Container;
+import dev.shoheiyamagiwa.easygl4j.graphics.Graphics;
 
 /**
  * @author Shohei Yamagiwa
  */
 public class GLPanel extends GLComponent {
+    @Override
+    public void draw(Graphics g) {
 
-    protected GLPanel(Container parent) {
-        super(parent);
+    }
+
+    @Override
+    public void dispose() {
+
     }
 }

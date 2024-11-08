@@ -21,7 +21,9 @@
  */
 package dev.shoheiyamagiwa.easygl4j.opengl;
 
-import dev.shoheiyamagiwa.easygl4j.Container;
+import dev.shoheiyamagiwa.easygl4j.graphics.Graphics;
+import dev.shoheiyamagiwa.easygl4j.graphics.Image;
+import dev.shoheiyamagiwa.easygl4j.utils.GLUtil;
 
 /**
  * The {@code GLButton} class represents the button in the application and is implemented with OpenGL specification.
@@ -29,12 +31,18 @@ import dev.shoheiyamagiwa.easygl4j.Container;
  * @author Shohei Yamagiwa
  */
 public class GLButton extends GLComponent {
-    /**
-     * Creates a new button that belongs to parent container.
-     *
-     * @param parent The container that is a parent of the component.
-     */
-    protected GLButton(Container parent) {
-        super(parent);
+    private Image sampleImg;
+
+    @Override
+    public void draw(Graphics g) {
+        if (sampleImg == null) {
+            sampleImg = GLUtil.createImage("/EasyGL4J/src/main/resources/sample.png");
+        }
+        g.drawImage(sampleImg, 10, 10);
+    }
+
+    @Override
+    public void dispose() {
+        sampleImg.dispose();
     }
 }

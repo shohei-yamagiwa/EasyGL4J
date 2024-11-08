@@ -24,11 +24,10 @@ package dev.shoheiyamagiwa.easygl4j.opengl;
 import dev.shoheiyamagiwa.easygl4j.Container;
 
 /**
+ * The {@code GLComponent} class is a superclass of all GL component classes.
+ *
  * @author Shohei Yamagiwa
+ * @since 1.0
  */
 public abstract class GLComponent extends Container {
-
-    protected GLComponent(Container parent) {
-        super(parent);
-    }
 }

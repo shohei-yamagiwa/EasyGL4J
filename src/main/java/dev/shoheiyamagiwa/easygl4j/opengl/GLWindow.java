@@ -21,7 +21,10 @@
  */
 package dev.shoheiyamagiwa.easygl4j.opengl;
 
+import dev.shoheiyamagiwa.easygl4j.Component;
 import dev.shoheiyamagiwa.easygl4j.Window;
+import dev.shoheiyamagiwa.easygl4j.graphics.Graphics;
+import dev.shoheiyamagiwa.easygl4j.opengl.graphics.GLGraphics;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
@@ -44,8 +47,22 @@ public class GLWindow extends Window {
         super(title, width, height);
     }
 
-    public GLWindow(String title, Window owner, int width, int height) {
-        super(title, owner, width, height);
+    public void run() {
+        running = true;
+
+        // Creates new window
+        create();
+
+        try {
+            // Update the window
+            Graphics g = new GLGraphics();
+            while (running) {
+                draw(g);
+            }
+        } finally {
+            // Finally dispose the window
+            dispose();
+        }
     }
 
     @Override
@@ -75,7 +92,8 @@ public class GLWindow extends Window {
             throw new RuntimeException("Failed to create a new window.");
         }
 
-        // TODO: Configure callbacks
+        // Configure callbacks
+        glfwSetWindowCloseCallback(id, _ -> running = false);
 
         // Make the context of the window as current one.
         glfwMakeContextCurrent(id);
@@ -91,7 +109,19 @@ public class GLWindow extends Window {
     }
 
     @Override
+    public void draw(Graphics g) {
+        GLGraphics gl = (GLGraphics) g;
+        gl.clear();
+        getChildren().forEach(child -> child.draw(gl));
+
+        glfwSwapBuffers(id);
+        glfwPollEvents();
+    }
+
+    @Override
     public void dispose() {
+        getChildren().forEach(Component::dispose);
+
         glfwDestroyWindow(id);
         glfwTerminate();
     }

@@ -80,6 +80,27 @@ public class Color {
         setAlpha(alpha);
     }
 
+    public long toHex() {
+        String a = Integer.toHexString((int) Math.floor(alpha * 255));
+        String r = Integer.toHexString((int) Math.floor(red * 255));
+        String g = Integer.toHexString((int) Math.floor(green * 255));
+        String b = Integer.toHexString((int) Math.floor(blue * 255));
+        if (a.length() == 1) {
+            a = "0" + a;
+        }
+        if (r.length() == 1) {
+            r = "0" + r;
+        }
+        if (g.length() == 1) {
+            g = "0" + g;
+        }
+        if (b.length() == 1) {
+            b = "0" + b;
+        }
+        String hex = "0x" + a + r + g + b;
+        return Long.decode(hex);
+    }
+
     public float getRed() {
         return red;
     }

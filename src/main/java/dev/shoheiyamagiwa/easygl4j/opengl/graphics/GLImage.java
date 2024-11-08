@@ -48,8 +48,9 @@ public class GLImage extends Image {
     public GLImage(ByteBuffer imageBuffer, int width, int height) {
         super(imageBuffer, width, height);
 
-        // Binds the image
         id = glGenTextures();
+
+        // Binds the image
         glBindTexture(GL_TEXTURE_2D, id);
 
         glTexParameteri(GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL13.GL_CLAMP_TO_BORDER);
@@ -58,6 +59,11 @@ public class GLImage extends Image {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
         glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL11.GL_UNSIGNED_BYTE, imageBuffer);
+    }
+
+    @Override
+    public void bind() {
+        glBindTexture(GL_TEXTURE_2D, id);
     }
 
     @Override

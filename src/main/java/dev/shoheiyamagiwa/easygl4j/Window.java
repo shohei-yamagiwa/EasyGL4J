@@ -44,27 +44,23 @@ public abstract class Window extends Container {
     private boolean fullscreen;
 
     /**
+     * Indicates whether the window is running or not.
+     */
+    protected boolean running = false;
+
+    /**
      * The listener that receives window events.
      */
     private WindowListener windowListener;
 
     /**
-     * Creates new root window with given {@code title}.
+     * Creates new window with given {@code title}, {@code width} and {@code height}.
      *
-     * @param title The title of the window.
+     * @param title  The title of the window.
+     * @param width  The width of the window.
+     * @param height The height of the window.
      */
     public Window(String title, int width, int height) {
-        this(title, null, width, height);
-    }
-
-    /**
-     * Creates new child window of the {@code owner} with given {@code title}
-     *
-     * @param title The title of the window.
-     * @param owner The owner of the window.
-     */
-    public Window(String title, Window owner, int width, int height) {
-        super(owner);
         this.title = title;
         this.width = width;
         this.height = height;

@@ -37,21 +37,13 @@ public abstract class Container extends Component {
     private final List<Component> children = new ArrayList<>();
 
     /**
-     * Creates new container that belongs to {@code parent}
-     *
-     * @param parent The parent of the container.
-     */
-    public Container(Container parent) {
-        super(parent);
-    }
-
-    /**
      * Adds new component to the container.
      *
      * @param component The component to be added.
      */
     public void add(Component component) {
         children.add(component);
+        component.setParent(this);
     }
 
     /**

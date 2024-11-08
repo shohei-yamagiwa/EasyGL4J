@@ -57,6 +57,11 @@ public abstract class Image {
     }
 
     /**
+     * Binds the image.
+     */
+    public abstract void bind();
+
+    /**
      * Disposes the image.
      */
     public abstract void dispose();

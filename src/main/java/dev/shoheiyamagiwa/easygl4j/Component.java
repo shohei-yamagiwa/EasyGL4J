@@ -21,6 +21,8 @@
  */
 package dev.shoheiyamagiwa.easygl4j;
 
+import dev.shoheiyamagiwa.easygl4j.graphics.Graphics;
+
 /**
  * A component is a graphical element that is displayed on the screen and interacted with the user.
  *
@@ -31,7 +33,7 @@ public abstract class Component {
     /**
      * The parent of the component. It may be {@code null} if the component is in top-level.
      */
-    protected final Container parent;
+    protected Container parent;
 
     /**
      * The x position of the component in the parent component.
@@ -66,16 +68,23 @@ public abstract class Component {
     protected boolean enabled;
 
     /**
-     * Creates new component with given container as parent.
+     * Draws the component on the screen.
      *
-     * @param parent The parent container.
+     * @param g Graphics context of the window.
      */
-    public Component(Container parent) {
-        this.parent = parent;
-    }
+    public abstract void draw(Graphics g);
+
+    /**
+     * Disposes the component.
+     */
+    public abstract void dispose();
 
     public Container getParent() {
         return parent;
+    }
+
+    public void setParent(Container parent) {
+        this.parent = parent;
     }
 
     public void setLocation(int x, int y) {

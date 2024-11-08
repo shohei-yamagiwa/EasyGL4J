@@ -40,6 +40,30 @@ public interface Graphics {
     void drawRect(int x, int y, int width, int height, Color color);
 
     /**
+     * Draws a horizontal gradient rect with given dimensions and colors.
+     *
+     * @param x      The left position of the rect.
+     * @param y      The top position of the rect.
+     * @param width  The width of the rect.
+     * @param height The height of the rect.
+     * @param left   The left color of the rect.
+     * @param right  The right color of the rect.
+     */
+    void drawHorizontalGradientRect(int x, int y, int width, int height, Color left, Color right);
+
+    /**
+     * Draws a vertical gradient rect with given dimensions and colors.
+     *
+     * @param x      The left position of the rect.
+     * @param y      The top position of the rect.
+     * @param width  The width of the rect.
+     * @param height The height of the rect.
+     * @param top    The top color of the rect.
+     * @param bottom The top color of the rect.
+     */
+    void drawVerticalGradientRect(int x, int y, int width, int height, Color top, Color bottom);
+
+    /**
      * Draws a text with given dimensions and color.
      *
      * @param text  The text to be rendered.

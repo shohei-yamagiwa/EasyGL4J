@@ -158,10 +158,29 @@ public class GLGraphics implements Graphics {
 
     @Override
     public void drawRect(int x, int y, int width, int height, Color color) {
+        begin();
+        drawImage(GLUtil.createImage(color, width, height), x, y);
+        end();
+    }
+
+    @Override
+    public void drawVerticalGradientRect(int x, int y, int width, int height, Color top, Color bottom) {
+        begin();
+        drawImage(GLUtil.createVerticalGradientImage(top, bottom, width, height), x, y);
+        end();
+    }
+
+    @Override
+    public void drawHorizontalGradientRect(int x, int y, int width, int height, Color left, Color right) {
+        begin();
+        drawImage(GLUtil.createHorizontalGradientImage(left, right, width, height), x, y);
+        end();
     }
 
     @Override
     public void drawText(String text, int x, int y, Color color) {
+        begin();
+        end();
     }
 
     @Override
@@ -176,7 +195,10 @@ public class GLGraphics implements Graphics {
         float s2 = 1.0F;
         float t2 = 1.0F;
 
+        begin();
+        image.bind();
         drawImage(x, y, x2, y2, s1, t1, s2, t2, Color.WHITE);
+        end();
     }
 
     public void clear() {
